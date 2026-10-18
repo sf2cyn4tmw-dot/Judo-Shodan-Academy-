@@ -1,43 +1,60 @@
-# Judo Shodan Academy
+# Judo Academy — Learn for Life (v2)
 
-A self-contained progressive web app for learning Kodokan terminology, Gokyo throwing techniques, groundwork, kata, and preparing for a USJF Shodan exam.
+An installable, mobile-first progressive web app for **any judoka**, including someone who has never trained and begins at white belt. Includes the original Shodan material plus new beginner, sport, and lifelong learning paths.
 
-## Included
+## Features
 
-- 30 progressive lessons with learning goals and Kodokan video search links
-- 40 Gokyo throws, additional throwing techniques, and pin/choke/arm-lock reference
-- Japanese vocabulary with local spaced repetition scheduling
-- Interactive ten-question quizzes
-- Training journal and completion tracking
-- On-device storage (localStorage), downloadable JSON backup and restore
-- Service worker for offline study, app manifest, icons, mobile-first UI
+- First launch setup for preferred name, current belt, affiliation, and study focus.
+- Five learning pathways: first month, fundamentals, black belt study, competition, judo culture and teaching.
+- Original 30 Kodokan / USJF oriented Shodan lessons **preserved**, plus 34 authored beginner, sport, and lifelong judo lessons.
+- Full Kodokan classification of **100 techniques** (68 throws, 32 grappling techniques), plus four additional common variations. Searchable and filterable, with links to the official video directory.
+- Japanese flashcards with offline spaced repetition reviews.
+- Topic quizzes, training journal, self-reported study and technique checklists, Nage no Kata guide.
+- Official Kodokan / IJF / USJF external resources and targeted YouTube search links.
+- Offline app shell, on-device save data, manual JSON export/restore. No login, server, third party tracking, ads, or payment.
 
-## Free hosting: GitHub Pages
+## Upgrade your existing GitHub Pages site
 
-1. Create a free GitHub account at https://github.com/ if needed.
-2. Create a new **public** repository named `judo-shodan-academy`.
-3. Upload **the contents of this folder** to the repository root, including `index.html`, `app.js`, `data.js`, `style.css`, `sw.js`, `manifest.webmanifest`, and the `icons` directory.
-4. In the repository, choose **Settings > Pages**. Set **Build and deployment > Source** to **Deploy from a branch**. Select `main` and `/ (root)` and Save.
-5. Once published, visit `https://YOUR_USERNAME.github.io/judo-shodan-academy/`. Publishing may take several minutes. The repository URL differs from the website URL.
-6. On iPhone, open that website in Safari. Use **Share > Add to Home Screen** (or **Add to Home Screen** from the Share actions). Launch the icon.
-7. Open the app while online at least once to save its offline assets. YouTube videos remain online-only.
+**Back up your original progress first.** In your current Judo Shodan Academy website, go to Settings and **Export backup**. Save the JSON in Files/iCloud Drive.
 
-Alternative free hosting: upload these files to a static-site host such as Cloudflare Pages or Netlify. HTTPS is required for a service worker on a live website.
+1. Extract `judo-academy-v2.zip`.
+2. On your **existing** GitHub repository, replace the website files with the contents of the `judo-academy-v2` folder, keeping their paths at the repository root:
+   - `index.html`
+   - `style.css`
+   - `app.js`
+   - `data.js`
+   - `curriculum.js` **(new)**
+   - `sw.js`
+   - `manifest.webmanifest`
+   - `icons/icon-192.png` and `icons/icon-512.png`
+3. Commit the changes on the same `main` branch. **Do not upload a ZIP in place of the files.** If the old files already exist, you must replace them, not create renamed duplicates.
+4. If GitHub Pages is already deployed, it will usually republish automatically after the commit. Verify the **Actions** tab or **Settings > Pages** if it doesn't.
+5. On your existing iPhone Home Screen icon, fully close and reopen the app while connected to the internet. If an old version remains cached, refresh it in Safari at the exact published URL, wait for the new version, then reopen the Home Screen app. The service worker cache name changed in v2.
 
-## Preview locally
+### What happens to existing progress?
 
-`python3 -m http.server 8000`
+The new app deliberately uses the **same localStorage key** `judo-shodan-academy-v1` and the same original lesson IDs. On the **same site URL and the same browser storage**, existing checked lessons, studied techniques, flashcard reviews and journal entries should carry over automatically. If the old app had progress but no profile, it migrates as an **Ikkyu / USJF / black belt path** profile. New users see a welcome screen and default to **White belt**. Rank is always editable.
 
-Navigate to `http://localhost:8000`. Service workers are permitted on localhost. Avoid opening index.html via file:// because offline caching may not work.
+Changing the hostname, clearing browser data, switching browser/PWA storage containers or reinstalling the app can lose access to local data. Use the export/import feature in that case. The v2 import supports v1 backup JSON too.
 
-## Important data notes
+### New site installation
 
-Progress is stored on the current browser/device and is not automatically synchronized. Use **Settings > Export backup** regularly, especially before resetting your phone or clearing website data. The JSON backup contains journal notes and progress, so keep it private. Import replaces local progress after confirmation. No account, server, tracking, or API key is required.
+Upload all files to a public GitHub Pages repository. Go to **Settings > Pages > Deploy from a branch > main > /(root)**. Wait for publishing. Open the HTTPS Pages URL in Safari and choose **Share > Add to Home Screen**. Load the website while online before expecting offline access.
 
-## Content and safety
+## Development / preview
 
-This is a study aid, not an official USJF certification app. Confirm your Yudanshakai's current promotion requirements, competitive classification, and kata role with your instructor. Use an instructor and suitable partner for potentially injurious throws, strangles and joint locks. Historical techniques in the encyclopedia may be prohibited in competition.
+Run `python3 -m http.server 8000` in the project directory and visit `http://localhost:8000`. JavaScript has no build step or dependencies. `node --check app.js`, `node --check curriculum.js`, and `node --check data.js` perform basic syntax verification.
 
-## Updating the app
+## Content scope and limitations
 
-Edit the static project files, upload replacements, and change the `CACHE` name in `sw.js` for a clean offline-cache refresh. Keep your data backups before changes.
+This is a broad study companion and technical reference, **not a substitute for a dojo or an exhaustive encyclopedia**. Beginner, throwing, groundwork and kata instruction needs an appropriately qualified instructor. Video links search for Kodokan instruction and are **not hand-verified direct video links**. Chokes, locks, falls, and difficult throws should never be practiced unsupervised.
+
+Belt colors, grading, junior requirements, competition regulations, and technical restrictions vary by association and change over time. The app's pathways are educational and **do not confer rank**. Check the current rank syllabus with the student's dojo and organization. Competition rules: https://www.ijf.org/ijf/documents .
+
+## Privacy and offline behavior
+
+No backend or account. Local progress is saved on device. Videos and official websites remain online-only. The service worker caches local app assets for offline use. The user is responsible for maintaining backups. Backups may include private journal notes.
+
+## Repository guidance
+
+This version can overwrite the original files without changing the repository name or GitHub Pages URL. Keep the exact old URL if you want to preserve locally stored progress. The static content can be expanded in `curriculum.js` and `data.js`.
