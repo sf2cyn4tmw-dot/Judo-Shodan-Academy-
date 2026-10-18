@@ -1,51 +1,88 @@
-# Judo Academy 3.0
+# Judo Academy 4.0
 
-A standalone, installable progressive web app built to help anyone study judo from their first white belt class through advanced lifelong practice. Version 3 adds an iOS-inspired interface, direct Kodokan demonstration videos, Japanese pronunciation playback and organizational rank preparation checklists.
+**A standalone, offline-capable Progressive Web App for learning judo from white belt through advanced Kodokan study.** Plain HTML, CSS and JavaScript. No account, subscription, server, analytics provider, framework or build step required. Hosted free on your existing GitHub Pages repository.
 
-## What's new in 3.0
+This is a community educational study companion, **not** a replacement for qualified physical instruction or an official promotion service. Apple-inspired appearance is an independent design and is not affiliated with Apple.
 
-- **Redesigned iPhone experience:** familiar five-tab navigation, readable cards, system typography, larger touch targets, custom icon, and automatic light/dark appearances. This is an independent design, not an Apple product.
-- **Japanese audio:** Listen and Slow controls on all 77 flashcards and individual technique pages. Playback uses the browser's Speech Synthesis API with a Japanese voice and generated hiragana prompts. This is *not recorded native-speaker audio*. Japanese voice availability and offline playback depend on iOS voice packs and browser support.
-- **Direct Kodokan video links:** all 100 Kodokan-classified techniques resolve to individual videos from the Kodokan × IJF Academy demonstration series. Video playback requires an internet connection and opens YouTube. Four additional technique variants are included in search; when no direct official clip is mapped, the app uses a targeted search.
-- **Rank preparation:** USJF, USJA, USA Judo, Kodokan and local dojo choices. Checkpoints adapt by organization, target grade and junior/adult division. The senior USJF Shodan tracker is based on the *2021 USJF senior promotion recommendations*, not a guaranteed 2026 local examination list. The app distinguishes sourced administrative/technical items from suggested learning milestones.
-- **Preserved from version 2:** 64 lessons across five study paths, 104 technique entries (100 classified Kodokan techniques), spaced-repetition flashcards, quizzes, training journal, Nage no Kata reference, import/export and offline app shell.
+## What's new in version 4
 
-## Update your existing GitHub Pages deployment
+| Feature | Description |
+| --- | --- |
+| Personalized Today dashboard | Daily next lesson, due Japanese reviews, suggested mat assignment, study streak, training chart |
+| Four-step guided lessons | All 64 lessons now use Learn → Watch → Practice → Reflect; step completion and notes are saved |
+| Detailed coaching library | 26 carefully authored technique guides, including kuzushi/control, entry, execution, frequent mistakes, related techniques and suggested drills |
+| Five-stage technique development | Not started → Introduced → Understood → Demonstrated → Applied in randori; *all stages are self-reported* |
+| Expanded quiz bank | 277 new vocabulary and technique identification questions; older history/theory questions retained; targeted quiz categories |
+| Audio recognition practice | Flashcard option hides the Japanese term until the answer is revealed; Listen / Slow use iOS Japanese speech synthesizer |
+| Structured mat assignments | Six safety-conscious suggested practice sequences for beginners, movement, groundwork, kata, technique combinations and reflection |
+| Training hub and journal | Session type, intensity, focus, notes, coach feedback, seven-day chart, total mat time and weekly goal |
+| Configurable weekly study goal | Set a training minutes goal in Settings; this is an optional personal milestone |
+| Familiar iPhone navigation | Today, Learn, Explore, Train and More; light/dark modes, system typography and accessible large controls |
 
-1. **Back up your progress** in the CURRENT app: More → Settings → Export JSON backup. Keep the downloaded JSON in iPhone Files or iCloud Drive.
-2. Download `judo-academy-v3.zip`, then extract it in Files. The ZIP contains a folder named `judo-academy-v3`.
-3. In your **existing** GitHub repository, replace the website files with the files *inside* that folder at the repository **root**. Keep the same repository, Pages URL and `main` branch.
-4. Replace these files: `index.html`, `app.js`, `data.js`, `curriculum.js`, `style.css`, `sw.js`, `manifest.webmanifest`, `icons/icon-192.png` and `icons/icon-512.png`. Add the new files: `apple.css`, `videos.js`, `speech.js`, `ranks.js`.
-5. Commit changes. GitHub Pages typically deploys automatically. Confirm under the repository's Actions tab or Settings → Pages. Existing Pages settings should remain unchanged.
-6. Reopen your current Home Screen app while online. If you see the old interface, allow the site to load once in Safari at its existing Pages URL, refresh, then relaunch the Home Screen app. The v3 service worker has a new cache name so it will cache the new files.
-7. Verify your progress. If anything is missing, use More → Settings → Restore a backup, selecting the JSON file you saved before the upgrade.
+### Existing content preserved
 
-Do **not** upload the ZIP itself as a website file, do **not** leave the entire `judo-academy-v3` folder nested in your repository, and do **not** delete your existing PWA until you have a verified backup. The icon may remain cached by iOS temporarily. Reinstalling a Home Screen shortcut can change its storage container, so back up before reinstalling.
+64 lessons, 5 learning pathways, 104 searchable technique entries including the 100 classified Kodokan techniques, 100 direct official Kodokan video links, 77 Japanese flashcards, spacing-based review, kata index, USJF/USJA/USA Judo/Kodokan/local-dojo promotion study checklists, privacy-conscious JSON backups, and offline shell caching.
 
-GitHub's native mobile app can browse and edit code, but its bulk upload functionality may be limited. Use whichever file-upload method you successfully used for the previous version. No extra hosting service is required.
+**Study material availability:** all 104 techniques can be opened. The 26 authored guides are the most detailed. Remaining techniques currently provide a general structured checklist plus a video, pronunciation and self-assessment; they do *not* yet have a custom written technique-by-technique explanation. Video and external resource links require internet. Japanese audio depends on available iOS/browser voice support and installed languages, so offline audio is not guaranteed.
 
-## Existing progress and data compatibility
+## Update the existing app
 
-This release intentionally retains the localStorage key `judo-shodan-academy-v1` and unchanged lesson / vocabulary / technique IDs. It adds `rankChecks` without removing previous fields. Existing lesson, review, journal, quiz and profile data is preserved when the origin/browser storage is the same. Old v1 data without an account profile is migrated to an Ikkyu/USJF profile as in v2.
+See `UPDATE_EXISTING_SITE.md` for exact steps. The main process is:
 
-Progress lives **on your own device**. It is not synchronized across browsers. Create backup files regularly, especially before updating or removing the app. Backups include your private training notes. No accounts, analytics SDKs, trackers or subscription.
+1. **Back up first:** in your current app, More → Settings → Export JSON backup. Store the JSON safely in iPhone Files or iCloud Drive.
+2. Unzip `judo-academy-v4.zip` using iPhone Files or a Mac.
+3. In your **existing** GitHub repository, replace the old website files with the **contents** of the extracted `judo-academy-v4` folder. Keep the same repository, `main` branch, GitHub Pages setting, URL and top-level `index.html`.
+4. Upload/add **`coaching.js`**, new in v4. Update `index.html`, `app.js`, `apple.css`, `sw.js` and the other included existing files. Replace all project code files together, ideally in one commit.
+5. Wait for your existing GitHub Pages deployment, refresh the site online in Safari and reopen the Home Screen app. The app icon should not need reinstalling.
+6. Check your profile, lessons and journal. If anything is missing, use More → Settings → Restore a backup.
 
-## Offline capabilities and limitations
+**Do not upload the ZIP as one website file.** Do not nest the entire extracted folder under the repository root. Do not delete your Home Screen app before confirming a backup; iOS web app storage can be separate from Safari storage.
 
-All locally hosted HTML/CSS/JS and lessons are cacheable through the service worker on HTTPS GitHub Pages. The app's full curriculum, cards, quizzes, and journal work offline after a successful installation/first load. External YouTube video playback and federation websites require internet access. Speech depends on browser support and installed Japanese voice assets, so offline pronunciation audio is **not guaranteed**.
+## Progress preservation
 
-This app is for education and organization of study. It cannot assess technique quality or issue promotions. Always practice throws, breakfalls, strangulations and joint locks with a qualified instructor. Certain classified techniques are prohibited in modern competition. Rank colors, age rules, memberships, deadlines and tests change across dojos and federations.
+The app deliberately continues to use the **same** localStorage key `judo-shodan-academy-v1`, with the original lesson, technique, flashcard and profile IDs. Version 4 only adds these data fields:
 
-## Curriculum & references
+- `skillLevels`: self-reported five-stage proficiency for each technique, with old boolean `skills` mapping to Introduced.
+- `lessonSteps`: completion of four guided learning steps.
+- `reflections`: written notes on lessons.
+- `activityLog`: local study activity used for an activity streak.
+- `settings.audioMode` and `settings.weeklyGoalMinutes`: personal preferences.
+- Extra optional fields on journal entries (`type`, `intensity`). Previous entries remain readable.
 
-- Official Kodokan / IJF Academy channel: https://www.youtube.com/channel/UCtF6tu7GuZYkZzht5MIv8UQ
-- Full direct link index collated from the 2020–21 official series: https://www.reddit.com/r/judo/comments/ofeodr/100_judo_techniques_from_kodokan_20202021/
-- USJF rank guidelines (2021): https://www.usjf.com/wp-content/uploads/2021/05/Handbook-Final-Revised-Sr.-Jr.-5-1-21.pdf
-- USJF rank and resources: https://www.usjf.com/downloadable-resources/
-- USJA national promotion system: https://www.usja.net/about/promotion
-- USA Judo promotion forms: https://www.usajudo.com/membership/promotions
-- IJF document library: https://www.ijf.org/ijf/documents
+Your progress is stored only within the same website origin/browser environment. It does not automatically synchronize across iPhone and Mac. Backups include potentially personal notes. No external tracking is included in this project.
+
+## Safety and accuracy
+
+- Never attempt high-impact techniques, neck controls, chokes or joint locks from video alone. Train with a qualified judo instructor.
+- Skills marked Demonstrated or Applied in randori are **self-assessed** and do not count as examiner sign-offs.
+- Competition legality can differ by age and ruleset. Historic Kodokan recognition does not imply that a technique is competition legal.
+- Belt colors, ages, requirements, testing authority, safety credentials and examination formats vary by organization and locality. Check your current dojo/federation sources.
+- Weekly goals, quizzes and charts are educational self-tracking tools; no medical performance or competition prediction is made.
 
 ## For developers
 
-The site is plain HTML, CSS and JavaScript with no build step and no external JS packages. Host its contents at the GitHub Pages repository root. Local browser tests: `node tests/check.mjs`; JS syntax: `node --check app.js` etc. Project data files: `data.js`, `curriculum.js`, `videos.js`, `ranks.js` and `speech.js`. PWA caching: `sw.js`. Apple-inspired appearance overrides: `apple.css`.
+Files in repository root:
+
+- `index.html`: web app shell, icons and navigation
+- `app.js`: UI, progress management and event handling
+- `coaching.js`: 26 authored technique guides, six suggested mat sessions and generated recall quiz content
+- `data.js`: techniques and vocabulary
+- `curriculum.js`: learning pathways and lessons
+- `videos.js`: existing direct video lookup table
+- `ranks.js`: organization-aware promotion *study* guides
+- `speech.js`: browser Japanese voice and hiragana mapping
+- `style.css` and `apple.css`: base style and modern iOS-inspired theme
+- `sw.js`: service worker, offline caching (updated cache key v4)
+- `manifest.webmanifest`, `icons/*`: installable app metadata
+- `tests/check.mjs`: zero-dependency data and asset sanity checks
+
+No npm install needed. You may run `node tests/check.mjs` and `node --check app.js`. For a local preview, serve the folder with `python3 -m http.server 8000` and open it in your browser. HTTPS is required for PWA installation and the offline service worker outside localhost.
+
+## Primary external references
+
+- Kodokan technique descriptions and video catalog: https://kdkjd.org/names-of-judo-techniques/
+- Kodokan official video channel: https://www.youtube.com/channel/UCtF6tu7GuZYkZzht5MIv8UQ
+- USJF: https://www.usjf.com/
+- USJF Nage no Kata: https://learn.usjf.com/course-overview-nage-no-kata/
+- USA Judo: https://www.usajudo.com/
+- IJF official rules and competition information: https://www.ijf.org/ijf/documents
