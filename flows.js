@@ -6,7 +6,7 @@
 window.JUDO_FLOWS = (() => {
   const sources = {
     kawamura:{name:'Teizo Kawamura, Combination and Counter Techniques of Judo (1958)',url:'https://judoinfo.com/combine/'},
-    ijf:{name:'IJF Academy, pedagogical judo examination examples',url:'https://academy.ijf.org/help'},
+    ijf:{name:'IJF Academy, pedagogical judo examination examples',url:'https://academy.ijf.org/student-handbook'},
     toronto:{name:'University of Toronto Judo Club syllabus',url:'https://judo.sa.utoronto.ca/syllabus/'},
     ireland:{name:'Kodokan Ireland, performance skills examples',url:'https://www.kodokanireland.com/curriculum/performance-skills'},
     usja:{name:'USJA Renraku no Kata guidelines',url:'https://www.usja.net/staff/forms/107/document/download'},

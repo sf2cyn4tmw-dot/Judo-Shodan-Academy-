@@ -1,24 +1,44 @@
-# Judo Academy 7.0 — A focused judo study app
+# Judo Academy 8.0 — Focused learning, smarter flows
 
-A lightweight, offline-capable PWA for rank preparation, technique study, and building combinations. No accounts or paid services.
+Judo Academy is a standalone offline-capable Progressive Web App for GitHub Pages. It can be installed on iPhone from Safari. No account, AI subscription or database needed.
 
-## Navigation
-1. **Home:** current rank, target rank, previous-rank review checklist, and goal checklist.
-2. **Learn:** guided lessons, kata and Japanese terminology.
-3. **My Library:** save or pin favorite techniques and browse the Kodokan encyclopedia.
-4. **Flowchart:** curated combination and counter pathways with grip/footwork detail, plus your own combination builder.
-5. **More:** vocabulary, quizzes, kata, videos, settings and backup.
+## Main navigation
 
-## Removed
-Class journals, workout plans, exercise library, weekly mat charts and workout logs are removed from the UI. Older saved data is retained in device storage and in JSON exports so upgrading never silently destroys prior records. It no longer contributes to new study progress. The `exercise-data.js` resource has been removed from the app and cache.
+1. **Home**: current and target ranks, promotion-study checklists.
+2. **Learn**: guided lessons, vocabulary, kata.
+3. **My Library**: saved techniques, starred favorites, search, and full Kodokan encyclopedia browsing.
+4. **Flowchart**: the three tools **Ideas / Saved / Build**.
+5. **More**: flashcards, quizzes, kata, resources, settings and JSON backups.
 
-## Rank lists
-Rank checklists for regular kyu grades are **suggested study milestones** and not a definitive federation syllabus. USJF Shodan details use the bundled 2021 USJF senior rank recommendations, but your local examination authority controls the requirements. For colors, grade conventions differ by organization. Profile and rank selections are study labels, not promotions.
+Class logging, workout planning, training analytics and session history are not presented. Legacy saved data is retained in the same storage key so upgrades are not destructive.
 
-## Privacy
-The localStorage key remains `judo-shodan-academy-v1` for continuity. New updates do not erase previous saved data. Export a JSON backup before upgrading. Only static files are served by GitHub Pages. No server or telemetry is required.
+## What's new in version 8
 
-## Deploy
-Upload the *contents* of this folder to the root of your existing GitHub Pages repository, overwriting old files. Ensure `rank-path.js` exists at the root. Remove the old `exercise-data.js` if present. Commit, and reopen on the same Pages URL. If stale, quit/relaunch the Home Screen app and refresh while connected. Never delete the app and its storage before exporting a backup.
+- **18 original detailed combination entry guides** covering grips, supporting and attacking feet, first attack, uke's reaction, pivots, timing and common errors, each in three short steps. All have a footwork progression summary and links to the individual Kodokan technique videos.
+- Remaining curated combinations retain the existing introductory hand and footwork cues, with no fabricated detailed steps.
+- Flowchart now defaults to a short list of Ideas, instead of a large network map, long details, and the full form on the same page.
+- The horizontal map is optional via **See map**.
+- **Saved** shows favorite connections and personal combinations, **Build** opens the personal builder directly.
+- My Library has **All / Pinned** filters, search, and an obvious Browse action without a duplicate dashboard.
+- All prior rank checkmarks, lessons, flashcard schedules, pinned techniques, notes and personal flows remain compatible.
 
-Run local data checks: `node tests/check.mjs`.
+### Sources and limits
+
+Curriculum and combination pairings were cross-referenced with:
+
+- IJF Academy teaching framework: https://academy.ijf.org/student-handbook
+- Teizo Kawamura's combination examples: https://judoinfo.com/combine/
+- Kodokan Ireland performance syllabus examples: https://www.kodokanireland.com/curriculum/performance-skills
+- Official Kodokan and IJF classified technique reference: https://judo.ijf.org/
+
+The **pairings** are documented judo teaching examples. The specific grip and footwork instructions in `entry-guides.js` are *original educational syntheses*, not quotations or official certification. All detailed examples assume a cooperative right-side, same-stance sleeve/lapel scenario, and the app can mirror left/right terms for left-sided study. Real execution depends on grips, relative stance, uke's movement, experience and safe coaching. No combinations are ranked as statistically “most successful” because we lack suitable competitive or user-frequency data. The app is not affiliated with JudoFlow.
+
+## Deploy to GitHub Pages
+
+See `UPDATE_EXISTING_SITE.md`. Upload the contents of this directory into the root of your existing repository. Include new `entry-guides.js`; update `sw.js` to the new cache version. Keep the same GitHub Pages URL so browser progress remains available. Export a backup first.
+
+## Verify
+
+From this directory: `node tests/check.mjs`.
+
+The app's data persists in localStorage under **`judo-shodan-academy-v1`**. No user account is required and the app never uploads study data to GitHub Pages. Offline lessons and flow instructions work once cached; external videos require an internet connection.
