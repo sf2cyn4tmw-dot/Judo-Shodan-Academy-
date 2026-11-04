@@ -1,23 +1,17 @@
-# Update your existing Judo Academy to version 9.0
+# Update your current Judo Academy to 10.0
 
-The new version repairs the Flowchart. **You do not need a new GitHub repository, domain or installed Home Screen app.**
+1. **Back up your current study data.** Open Judo Academy on your iPhone, go to More → Settings, and choose **Export backup**. Save the JSON file to Files.
+2. Download the `judo-academy-v10.zip` file, open it in Files, and unzip it.
+3. Open your existing GitHub repository and upload the **contents** of the extracted `judo-academy-v10` folder to the repository root. Replace the old same-named files rather than uploading the ZIP or placing an extra folder inside the repo.
+4. Confirm `index.html`, `app.js`, `apple.css`, `flows.js`, `entry-guides.js`, `footwork.js`, and `sw.js` are all in the repository root. Include every other file in the package too.
+5. Commit to the branch GitHub Pages deploys (usually `main`). **Do not create a new repository or change your GitHub Pages address.**
+6. Wait until GitHub Actions or Settings → Pages shows the updated deployment completed. Open your Pages URL in Safari while connected to the internet, then close and reopen your Home Screen app. If you still see the old disabled form, reload the Safari site and reopen the app; versioned scripts help force an update.
+7. Open **Flowchart → + Build**. Both drop-downs should offer 104 techniques. Choose O uchi gari and Tai otoshi and tap **Save combination**. It should open **Saved** with a visible combination map and coaching detail. If you already saved that route, it will remain saved rather than create another copy.
 
-1. In your current app, open **More → Settings → Export backup**. Save the JSON backup in Files or iCloud Drive. Do not upload the backup to your public repository.
-2. Download `judo-academy-v9.zip` and unzip it on your iPhone or Mac.
-3. Open the **same GitHub repository** used by your existing GitHub Pages site. Upload the files **inside** the new folder into the repository root, replacing the existing files. Do not upload the ZIP as one file or nest everything inside another folder.
-4. Confirm that the root contains `index.html`, `app.js`, `flows.js`, `entry-guides.js`, **`footwork.js`**, `apple.css`, `style.css`, `sw.js`, `data.js`, `curriculum.js`, and the other bundled resources, as well as the `icons/` folder.
-5. Commit the files to the branch that GitHub Pages deploys (normally `main`). Open GitHub **Actions** or **Settings → Pages** to verify that the deployment finished.
-6. Open your existing installed iPhone web app while online. Close it fully and relaunch if the screen still looks like v8. If needed, visit the site URL in Safari and refresh, then relaunch the Home Screen app. Never delete the installed app before exporting a backup because its storage may be tied to that installed instance.
-7. Tap **Flowchart**. You should **immediately see a connected node diagram** beneath the starting technique and stance pickers. Tap a blue arrow or technique to open the foot diagram and instructions below it. Tap **1 / 2 / 3** to advance through the grips and footwork. Try switching to Left stance.
-8. Check **Saved**, **Build**, your rank checklist and My Library. Your previous progress should remain. If it's missing, use **More → Settings → Restore backup** with the JSON you exported.
+## Notes
 
-## Troubleshooting
-
-- **Still seeing a list rather than a chart:** Confirm GitHub has deployed the new `app.js`, `apple.css`, `index.html`, and `sw.js`. iOS may retain an older PWA cache until you refresh online.
-- **Blank screen:** Check for missing `footwork.js`, `entry-guides.js`, `flows.js`, or other script files. Every JS file referenced by `index.html` must be present in the repository root.
-- **Empty My Library:** Your stored data is device-specific, not synced to GitHub. Restore your JSON backup on the same site if needed.
-- **Videos unavailable offline:** Expected; technique text, diagrams and locally cached lessons work offline after the updated app has loaded and cached successfully. External video requires internet.
-
-## Safety note
-
-The colored foot diagrams are schematic illustrations, not a substitute for a coach or a guarantee that a specific foot position is safe for every athlete, opponent, stance or grip. Practice with a qualified judo instructor and cooperative uke before adding speed or resistance.
+- Existing app progress is kept under the original browser storage key `judo-shodan-academy-v1`. These files do not reset it.
+- Old journal/workout records remain in backups, but those interfaces are still removed.
+- Saved personal combinations can now be edited by opening **Saved**, selecting the combination, and tapping **Edit my notes**.
+- If an update unexpectedly loses your progress, import the backup in More → Settings. Restoring overwrites the device's current study data.
+- A first deployment can still be affected by iOS PWA caching; make sure you check the live Pages website and then the installed Home Screen app.

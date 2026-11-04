@@ -171,3 +171,23 @@ details{background:var(--card);border-color:var(--hair);border-radius:16px;paddi
 .v9-foot-diagram{margin:12px 0}.v9-footwork{border:1px solid var(--hair);border-radius:15px;padding:13px;background:var(--card)}.v9-footwork-head{display:flex;align-items:center;justify-content:space-between;gap:7px;font-size:12px;margin-bottom:11px}.v9-footwork-head span{color:var(--blue);font-size:10px;font-weight:800}.v9-feet-svg{width:100%;max-width:380px;display:block;margin:0 auto;min-height:220px}
 .v9-foot-legend{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;padding:10px 0 3px}.v9-foot-legend span{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:10px}.v9-key{width:10px;height:10px;border-radius:50%;display:inline-block}.v9-key.blue{background:#2d7cbe}.v9-key.mint{background:#42a98c}.v9-key.grey{background:#b2bec9}.v9-figure-note{font-size:10px;line-height:1.48;color:var(--muted);margin:8px 2px 0}.v9-other-paths{background:var(--card);border:1px solid var(--hair);padding:14px;border-radius:16px;margin:12px 0 14px}.v9-other-paths summary{font-size:13px;font-weight:750;cursor:pointer}.v9-other-paths summary span{font-size:11px;color:var(--muted);float:right;font-weight:500}.v9-other-paths .v8-flow-list{margin-top:12px}.v9-no-sketch{background:var(--soft);border-radius:12px;padding:12px;color:var(--ink);font-size:12px;line-height:1.5}.v9-no-sketch p{margin:5px 0 0;color:var(--muted)}
 @media(prefers-color-scheme:dark){.v9-node.selected:not(.start) rect{fill:#224b70}.v9-node.pinned rect{fill:#203953}.v9-node-title{fill:var(--ink)}.v9-footwork{background:var(--card)}}
+
+/* Version 10: the full encyclopedia is available in the combination builder. */
+.v10-build-head{margin-top:16px}.v10-builder{max-width:760px}
+.v10-pick-grid{display:grid;grid-template-columns:1fr;gap:4px}
+.v10-pick-grid label{margin:0;color:var(--muted);font-size:12px;font-weight:750}
+.v10-pick-grid select{width:100%;font-size:16px;min-height:55px;padding:10px 32px 10px 13px;text-overflow:ellipsis}
+.v10-connector{display:grid;place-items:center;font-size:21px;color:var(--blue);height:26px}
+.v10-pick-count{margin:9px 0 14px;font-size:11px;color:var(--muted)}
+.v10-connection-info{background:var(--soft);padding:12px 14px;border-radius:13px;font-size:13px;line-height:1.55;margin:4px 0 18px;color:var(--ink)}
+.v10-notes{border:1px solid var(--hair);border-radius:15px;margin:10px 0 16px;overflow:hidden}
+.v10-notes>summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 13px;list-style:none;color:var(--ink)}
+.v10-notes>summary::-webkit-details-marker{display:none}
+.v10-notes>summary span{font-size:11px;color:var(--muted);text-align:right}
+.v10-notes[open]>summary{border-bottom:1px solid var(--hair)}
+.v10-notes-inner{padding:14px 13px}.v10-notes-inner label{font-size:12px;margin:12px 0}.v10-notes-inner .v10-fill{margin:4px 0 14px;padding:11px 14px;font-size:12px}
+.v10-notes-inner textarea{font-size:14px;min-height:70px}
+.v10-error{padding:12px;background:var(--warning);border-radius:11px;color:#72501d;font-size:13px}
+.v10-builder-actions{display:grid;gap:10px}
+.v10-saved-banner{background:var(--tint);border:1px solid var(--hair);border-radius:14px;padding:14px 16px;margin:14px 0;color:var(--ink);font-size:13px;font-weight:690}
+@media(min-width:700px){.v10-pick-grid{grid-template-columns:1fr 24px 1fr;align-items:center}.v10-connector{transform:rotate(-90deg)}}
