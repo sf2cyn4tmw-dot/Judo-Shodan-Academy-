@@ -1,44 +1,32 @@
-# Judo Academy 8.0 — Focused learning, smarter flows
+# Judo Academy 9.0 — Flowchart Restored
 
-Judo Academy is a standalone offline-capable Progressive Web App for GitHub Pages. It can be installed on iPhone from Safari. No account, AI subscription or database needed.
+A standalone, offline-capable judo learning PWA, designed for iPhone and hosted on GitHub Pages. Version 9 corrects two important problems in 8.0: the Flowchart had stopped showing a chart by default, and combination footwork was buried below lists.
 
-## Main navigation
+## What changed
 
-1. **Home**: current and target ranks, promotion-study checklists.
-2. **Learn**: guided lessons, vocabulary, kata.
-3. **My Library**: saved techniques, starred favorites, search, and full Kodokan encyclopedia browsing.
-4. **Flowchart**: the three tools **Ideas / Saved / Build**.
-5. **More**: flashcards, quizzes, kata, resources, settings and JSON backups.
+- **Actual interactive Flowchart is back**, immediately visible when you open the Flowchart tab. Start from a technique, see connected second and third attacks, tap a branch or an arrow to read the instructions.
+- **Coaching directly below the chart**, not hidden under optional menus. Study the real first attack, uke's reaction, grips and hands, supporting foot, attacking foot, pivot, timing, mistakes, and partner drill.
+- **18 illustrated combinations**, each with three stage foot placement sketches, plus existing detailed text. Left stance mirrors the drawings and directional terms. The other curated combinations retain their written grip and footwork guidance, without pretending to have verified diagrams.
+- **Fixed combination personalization bug.** Previous versions computed an invalid numeric score for most connections; pinned or favorite paths now really do receive higher priority.
+- **Simpler Flowchart / Saved / Build** tabs remain; the full diagram, not a list, is the primary interaction. The Saved tab also shows connected routes. Other possible paths are folded under one optional disclosure.
+- **No class journal or workout planner UI was reintroduced.** Home rank checklist, Learn, My Library, and More remain unchanged.
 
-Class logging, workout planning, training analytics and session history are not presented. Legacy saved data is retained in the same storage key so upgrades are not destructive.
+## Important learning limits
 
-## What's new in version 8
+Teaching sketches show relative positions, never exact distances or optimal angles for all situations. They are **original schematic study aids**, not motion-captured footage and not validated by a Japanese instructor. The detailed grips and foot placement descriptions in `entry-guides.js` are original educational syntheses based on teaching combinations, not verbatim instruction from official schools. The individual throws should be learned with qualified in-person supervision. Links to Kodokan demonstrations open externally and require internet.
 
-- **18 original detailed combination entry guides** covering grips, supporting and attacking feet, first attack, uke's reaction, pivots, timing and common errors, each in three short steps. All have a footwork progression summary and links to the individual Kodokan technique videos.
-- Remaining curated combinations retain the existing introductory hand and footwork cues, with no fabricated detailed steps.
-- Flowchart now defaults to a short list of Ideas, instead of a large network map, long details, and the full form on the same page.
-- The horizontal map is optional via **See map**.
-- **Saved** shows favorite connections and personal combinations, **Build** opens the personal builder directly.
-- My Library has **All / Pinned** filters, search, and an obvious Browse action without a duplicate dashboard.
-- All prior rank checkmarks, lessons, flashcard schedules, pinned techniques, notes and personal flows remain compatible.
+Sources for selecting and teaching combinations:
 
-### Sources and limits
+- IJF Academy practical teaching progression: https://academy.ijf.org/help (explicit examples include O uchi gari → Tai otoshi and O uchi gari → Ko uchi gari).
+- British Judo Association technical frameworks: https://www.britishjudo.org.uk/wp-content/uploads/2024/10/Technical-Frameworks.pdf
+- Kodokan Ireland performance combinations: https://www.kodokanireland.com/curriculum/performance-skills
+- IJF O soto gari technique reference: https://judo.ijf.org/techniques/O-soto-gari
+- Official Kodokan technique videos in the app's video library.
 
-Curriculum and combination pairings were cross-referenced with:
+## Deployment and backups
 
-- IJF Academy teaching framework: https://academy.ijf.org/student-handbook
-- Teizo Kawamura's combination examples: https://judoinfo.com/combine/
-- Kodokan Ireland performance syllabus examples: https://www.kodokanireland.com/curriculum/performance-skills
-- Official Kodokan and IJF classified technique reference: https://judo.ijf.org/
+See **UPDATE_EXISTING_SITE.md**. Keep the same GitHub Pages address and repository. Preserve the `judo-shodan-academy-v1` localStorage key. Export a JSON backup before deploying. Version 9 adds **`footwork.js`** and updates `sw.js` to a new cache version.
 
-The **pairings** are documented judo teaching examples. The specific grip and footwork instructions in `entry-guides.js` are *original educational syntheses*, not quotations or official certification. All detailed examples assume a cooperative right-side, same-stance sleeve/lapel scenario, and the app can mirror left/right terms for left-sided study. Real execution depends on grips, relative stance, uke's movement, experience and safe coaching. No combinations are ranked as statistically “most successful” because we lack suitable competitive or user-frequency data. The app is not affiliated with JudoFlow.
+## Testing
 
-## Deploy to GitHub Pages
-
-See `UPDATE_EXISTING_SITE.md`. Upload the contents of this directory into the root of your existing repository. Include new `entry-guides.js`; update `sw.js` to the new cache version. Keep the same GitHub Pages URL so browser progress remains available. Export a backup first.
-
-## Verify
-
-From this directory: `node tests/check.mjs`.
-
-The app's data persists in localStorage under **`judo-shodan-academy-v1`**. No user account is required and the app never uploads study data to GitHub Pages. Offline lessons and flow instructions work once cached; external videos require an internet connection.
+Run `node tests/check.mjs` for data and consistency checks. The built app was also exercised on a simulated 390px iPhone screen via a browser with bundled local assets: graph visible on entry, diagram selection, 3-step guidance, left stance, saved chart, builder access, library, and legacy profile data. Live GitHub deployment and offline reload still need verification on the actual iPhone.
